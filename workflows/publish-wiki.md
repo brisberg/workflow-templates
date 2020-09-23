@@ -8,4 +8,4 @@ This can be easily accomplished using [GitHub-Wiki-Action](https://github.com/An
 
 See the above action for more configuration options.
 
-[Standard Workflow](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.yml)
+[Standard Workflow](https://github.com/brisberg/workflow-templates/blob/main/workflows/publish-wiki.yml)

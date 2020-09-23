@@ -4,8 +4,8 @@ Suitable for use in other projects/repositories.
 
 ### Documentation
 
-- Publish to a GitHub Wiki \[[doc](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.md)|[workflow](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.yml)]
+- Publish to a GitHub Wiki \[[doc](https://github.com/brisberg/workflow-templates/blob/main/workflows/publish-wiki.md)|[workflow](https://github.com/brisberg/workflow-templates/blob/main/workflows/publish-wiki.yml)]
 
 ### Testing
 
-- Test and Lint with Yarn \[[doc](https://github.com/brisberg/workflow-templates/workflows/yarn-test-lint.md)|[workflow](https://github.com/brisberg/workflow-templates/workflows/yarn-test-lint.yml)]
+- Test and Lint with Yarn \[[doc](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-test-lint.md)|[workflow](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-test-lint.yml)]
