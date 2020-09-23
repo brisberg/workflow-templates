@@ -8,4 +8,4 @@ Suitable for use in other projects/repositories.
 
 ### Testing
 
-- Build and Test with Yarn \[[doc](https://github.com/brisberg/workflow-templates/workflows/yarn-build-test-lint.md)|[workflow](https://github.com/brisberg/workflow-templates/workflows/yarn-build-test-lint.yml)]
+- Test and Lint with Yarn \[[doc](https://github.com/brisberg/workflow-templates/workflows/yarn-test-lint.md)|[workflow](https://github.com/brisberg/workflow-templates/workflows/yarn-test-lint.yml)]
