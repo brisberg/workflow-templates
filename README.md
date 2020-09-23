@@ -4,4 +4,4 @@ Suitable for use in other projects/repositories.
 
 ### Documentation
 
-- Publish to a GitHub Wiki [(workflow)](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.yml)
+- Publish to a GitHub Wiki \[[doc](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.md)|[workflow](https://github.com/brisberg/workflow-templates/workflows/publish-wiki.yml)]
