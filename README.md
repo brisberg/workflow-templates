@@ -9,3 +9,7 @@ Suitable for use in other projects/repositories.
 ### Testing
 
 - Test and Lint with Yarn \[[doc](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-test-lint.md)|[workflow](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-test-lint.yml)]
+
+### Releasing
+
+- Create Release (with artifacts) \[[doc](https://github.com/brisberg/workflow-templates/blob/main/workflows/create-release.md)|[workflow](https://github.com/brisberg/workflow-templates/blob/main/workflows/create-release.yml)]
