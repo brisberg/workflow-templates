@@ -1,0 +1,33 @@
+on:
+  push:
+    tags:
+      # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*'
+
+name: Create Release
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Generate Release Notes
+        id: gen-release-notes
+        # TODO: Change to your Release Notes steps
+        run: |
+          releasenotes --generate >>
+          ::set-output name=release_notes::{&1}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.gen-release-notes.outputs.release_notes }}
+          draft: false
+          prerelease: false

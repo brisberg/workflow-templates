@@ -1,0 +1,58 @@
+on:
+  push:
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Release
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create-release.outputs.upload_url }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Generate Release Notes
+        id: gen-relnotes
+        # TODO: Change to your Release Notes steps
+        run: |
+          echo "::set-output name=release_notes::Latest Release"
+
+      - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.gen-relnotes.outputs.release_notes }}
+          draft: false
+          prerelease: false
+
+  upload-asset:
+      name: Upload Release Asset
+      needs: [create-release]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Build project
+          # TODO: Change to your build steps
+          run: |
+            zip --junk-paths my-artifact README.md
+            echo "::set-output name=out_path::./my-artifact.zip"
+            echo "::set-output name=out_name::my-artifact.zip"
+
+        - name: Upload Release Asset
+          id: upload-release-asset
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ needs.create-release.outputs.upload_url }}
+            asset_path: ${{ steps.build-asset.outputs.out_path }}
+            asset_name: ${{ steps.build-asset.outputs.out_name }}
+            asset_content_type: application/zip
