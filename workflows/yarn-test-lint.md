@@ -6,6 +6,24 @@ Generally, repositories will want to run their specified `test` and `lint` scrip
 
 ## Features
 
+#### Pull Requests Triggering
+
+By using the following trigger syntax:
+
+```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+```
+
+The workflow will only trigger on new commits to `main` and Pull Requests opened against `main`. This will apply to both PRs created from the repo origin, and any PRs created from forks.
+
+The one downside is the workflow will not be run on new commits to any other remote branch on `origin` unless a PR is opened. If a second `develop` branch needs to be maintained it will need to be added to these triggers.
+
+[Link](https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662/2)
+
 #### Matrix Strategy
 
 The workflow uses a Matrix Strategy declaration which makes it simple to run multiple workflows in parallel for different Node.js versions.

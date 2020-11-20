@@ -1,6 +1,6 @@
 # Yarn (Build, Test, Lint) in sub jobs
 
-Attempting to reconfigure [yarn-build-test-lint](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-build-test-lint.md) workflow into a series of jobs.
+Attempting to reconfigure [yarn-test-lint](https://github.com/brisberg/workflow-templates/blob/main/workflows/yarn-test-lint.md) workflow into a series of jobs.
 
 The advantage is that in the Actions UI it will split out the results of each step, making it clear at a glance what failed. Also it will still run `lint` and `test` when the other fails which is desirable to fix mistakes in less CI runs.
 

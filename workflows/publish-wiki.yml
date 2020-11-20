@@ -2,12 +2,12 @@ name: Publish Wiki
 
 on:
   push:
-    paths:
-      # Trigger only when wiki directory changes
-      - 'wiki/**'
     branches:
-      # And only on main branch
+      # Only on main branch
       - main
+    paths:
+      # And only trigger when wiki directory changes
+      - 'wiki/**'
 
 jobs:
   publish-wiki:
