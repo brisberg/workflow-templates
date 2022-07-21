@@ -16,34 +16,34 @@ jobs:
 
     steps:
       # Setup Runner with node
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: actions/cache@v2 (.yarn)
-      uses: actions/cache@v2
-      # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      id: yarn-cache
-      with:
-        path: 'node_modules/'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-modules-
+      - name: actions/cache@v2 (.yarn)
+        uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: "node_modules/"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
 
-    - name: yarn install
-      if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
-      run: yarn install --frozen-lockfile
+      - name: yarn install
+        if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+        run: yarn install --frozen-lockfile
 
-    - name: yarn run build
-      run: yarn run build
+      - name: yarn run build
+        run: yarn run build
 
-    - name: Upload built files
-      uses: actions/upload-artifact@v2
-      with:
-        name: lib-dist
-        path: lib
+      - name: Upload built files
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib-dist
+          path: lib
 
   test:
     needs: [build]
@@ -55,30 +55,30 @@ jobs:
 
     steps:
       # Setup Runner with node
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: actions/cache@v2 (.yarn)
-      uses: actions/cache@v2
-      # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      id: yarn-cache
-      with:
-        path: 'node_modules/'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-modules-
+      - name: actions/cache@v2 (.yarn)
+        uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: "node_modules/"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
 
-    - name: Download built files
-      uses: actions/download-artifact@v2
-      with:
-        name: lib-dist
-        path: lib
+      - name: Download built files
+        uses: actions/download-artifact@v2
+        with:
+          name: lib-dist
+          path: lib
 
-    - name: yarn run test
-      run: yarn run test
+      - name: yarn run test
+        run: yarn run test
 
   lint:
     needs: [build]
@@ -90,27 +90,27 @@ jobs:
 
     steps:
       # Setup Runner with node
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: actions/cache@v2 (.yarn)
-      uses: actions/cache@v2
-      # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      id: yarn-cache
-      with:
-        path: 'node_modules/'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-modules-
+      - name: actions/cache@v2 (.yarn)
+        uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: "node_modules/"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
 
-    - name: Download built files
-      uses: actions/download-artifact@v2
-      with:
-        name: lib-dist
-        path: lib
+      - name: Download built files
+        uses: actions/download-artifact@v2
+        with:
+          name: lib-dist
+          path: lib
 
-    - name: yarn run lint
-      run: yarn run lint
+      - name: yarn run lint
+        run: yarn run lint
